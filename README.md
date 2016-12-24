@@ -18,8 +18,7 @@ First go to triggi.com/connect/ log in and choose a username. Once thats done cr
 
 ## Sample config.json
 This is the sample config.json for homebridge.
-`
-
+```
 {
     "bridge": {
         "name": "Homebridge",
@@ -41,7 +40,8 @@ This is the sample config.json for homebridge.
     "platforms": [
         {}
     ]
-}`
+}
+```
 
 ## HTTP Webhooks
 ### What are HTTP Webhooks
