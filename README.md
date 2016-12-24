@@ -4,9 +4,13 @@ With homebridge-triggi you can use all your Triggi services in homekit. In homek
 
 ## How to install
 First if you haven't installed homebridge jet install it by using the command:
-* npm install -g homebridge
+
+`npm install -g homebridge`
+
 Then install this plugin by using the command:
-* npm install -g homebridge-triggi
+
+`npm install -g homebridge-triggi`
+
 Now you're done with installing. Now we want to setup the Triggi app!
 
 ## How to set up Triggi
@@ -22,9 +26,13 @@ You can also add a sensor in homekit. And its checking if something like the wea
 
 ### How to install HTTP Webhooks
 First if you haven't installed homebridge jet install it by using the command:
-* npm install -g homebridge
+
+`npm install -g homebridge`
+
 Then install HTTP Webhooks by the command:
-* npm install -g homebridge-http-webhooks
+
+`npm install -g homebridge-http-webhooks`
+
 Now you're done installing, now you can go over to the next paragraph and see how to setup!
 
 ### How to setup HTTP Webhooks and Triggi
