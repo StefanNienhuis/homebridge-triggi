@@ -43,6 +43,10 @@ This is the sample config.json for homebridge.
 }
 ```
 
+* accessory: Must always be Triggi
+* name: The name you want it to show in homekit
+* connecturl: Here you put the connect url that is defined in the e-mail Triggi has send to you.
+
 ## HTTP Webhooks
 ### What are HTTP Webhooks
 You can also add a sensor in homekit. And its checking if something like the weather tommorow is sunny. Then it turns on your connector. And if you want a sensor in homekit that checks if tommorow is sunny. You also need to install the homebridge plugin [HTTP Webhooks](https://www.npmjs.com/package/homebridge-http-webhooks). 
