@@ -18,7 +18,30 @@ First go to triggi.com/connect/ log in and choose a username. Once thats done cr
 
 ## Sample config.json
 This is the sample config.json for homebridge.
-TODO
+`
+
+{
+    "bridge": {
+        "name": "Homebridge",
+        "username": "CC:22:3D:E3:CE:30",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+    
+    "description": "This is an example configuration file for the homebridge-triggi plugin!",
+
+    "accessories": [
+        {
+            "accessory" : "Triggi",
+            "name" : "Send E-Mail",
+            "connecturl" : "YOUR CONNECT URL"
+        }
+    ],
+
+    "platforms": [
+        {}
+    ]
+}`
 
 ## HTTP Webhooks
 ### What are HTTP Webhooks
