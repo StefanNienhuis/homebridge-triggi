@@ -1,0 +1,36 @@
+{
+  "name": "homebridge-triggi",
+  "version": "0.0.1",
+  "description": "With this plugin you can connect your Triggi services to homebridge",
+  "main": "index.js",
+  "dependencies": {
+    "homebridge": "^0.4.16",
+    "request": "^2.79.0"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StefanNienhuis/homebridge-triggi.git"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "homebridge-triggi",
+    "triggi",
+    "siri",
+    "webhooks",
+    "http"
+  ],
+  "author": "Stefan Nienhuis",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/StefanNienhuis/homebridge-triggi/issues"
+  },
+  "homepage": "https://github.com/StefanNienhuis/homebridge-triggi#readme"
+}
