@@ -3,7 +3,7 @@
 With homebridge-triggi you can use all your Triggi services in homekit. In homekit you have a button, if you press that button it wil connect to the Triggi server and run your action!
 
 ## How to install
-First if you haven't installed homebridge jet install it by using the command:
+First if you haven't installed homebridge yet install it by using the command:
 
 `npm install -g homebridge`
 
@@ -52,7 +52,7 @@ This is the sample config.json for homebridge.
 You can also add a sensor in homekit. And its checking if something like the weather tommorow is sunny. Then it turns on your connector. And if you want a sensor in homekit that checks if tommorow is sunny. You also need to install the homebridge plugin [HTTP Webhooks](https://www.npmjs.com/package/homebridge-http-webhooks). 
 
 ### How to install HTTP Webhooks
-First if you haven't installed homebridge jet install it by using the command:
+First if you haven't installed homebridge yet install it by using the command:
 
 `npm install -g homebridge`
 
