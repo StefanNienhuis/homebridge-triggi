@@ -19,33 +19,27 @@ First go to triggi.com/connect/ log in and choose a username. Once thats done cr
 ## Sample config.json
 This is the sample config.json for homebridge.
 ```
-{
-    "bridge": {
-        "name": "Homebridge",
-        "username": "CC:22:3D:E3:CE:30",
-        "port": 51826,
-        "pin": "031-45-154"
-    },
-    
-    "description": "This is an example configuration file for the homebridge-triggi plugin!",
-
-    "accessories": [
+"platforms": [
         {
-            "accessory" : "Triggi",
-            "name" : "Send E-Mail",
-            "connecturl" : "YOUR CONNECT URL"
+            "platform": "Triggi",
+            "triggs": [
+                {
+                    "name": "Yeah it's weekend! Tweet it!",
+                    "connecturl": "YOUR CONNECT URL HERE"
+                },
+                {
+                    "name": "Refueld my car",
+                    "connecturl": "YOUR CONNECT URL HERE"
+                }
+            ]
         }
-    ],
-
-    "platforms": [
-        {}
     ]
-}
 ```
 
-* accessory: Must always be Triggi.
-* name: The name you want it to show in homekit.
-* connecturl: Here you put the connect url that is defined in the e-mail Triggi has send to you.
+* platform: Must always be Triggi.
+* triggs: A dictionary of all the triggs you want in homekit
+* triggs/name: The name that you want the button to have in homekit.
+* triggs/connecturl: Here you put the connect url that is defined in the e-mail Triggi has send to you.
 
 
 
