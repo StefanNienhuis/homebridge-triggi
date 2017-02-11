@@ -1,56 +1,74 @@
 var request = require('request');
-var Service, Characteristic;
+var Service, Characteristic, HomebridgeAPI;
 
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
+    HomebridgeAPI = homebridge;
 
-    homebridge.registerAccessory('homebridge-triggi', 'Triggi', Triggi);
+    homebridge.registerPlatform('homebridge-triggi', 'Triggi', TriggiPlatform);
+    homebridge.registerAccessory('homebridge-triggi', 'TriggiAccessory', TriggiAccessory);
 };
 
-function Triggi(log, config) {
+function TriggiPlatform(log, config) {
     this.log = log;
-    this.config = config;
+    this.triggs = config.triggs;
+}
 
-    this.name = config.name || "Event";
-    this.connecturl = config.connecturl || "";
+TriggiPlatform.prototype = {
+    accessories: function(callback) {
+        this.accessories = [];
+        this.triggiAccessories = [];
 
-    var connecturl = this.connecturl
+        for (var i = 0; i < this.triggs.length; i++) {
+            var triggiAccessory = new TriggiAccessory(this.log, this.triggs[i], this);
+            this.accessories.push(triggiAccessory);
+            this.triggiAccessories.push(triggiAccessory);
+        }
 
-    if (connecturl.startsWith("https://connect.triggi.com/c/")) {
-      this.connecturlright = true;
+        callback(this.accessories);
+    }
+};
+
+function TriggiAccessory(log, config, platform) {
+    this.platform = platform;
+    this.log = log;
+    this.name = config.name;
+    this.connecturl = config.connecturl;
+
+    if (this.connecturl.startsWith("https://connect.triggi.com/c/")) {
+
     } else {
-      log.info("There's something wrong with your connect URL!");
-      this.connecturlright = false;
+        throw new Error('There is something wrong with your connect URL!');
     }
+
 }
 
-Triggi.prototype = {
-    getServices: function() {
-        this.services = [];
+TriggiAccessory.prototype.getServices = function() {
+    var log = this.log;
+    var name = this.name;
+    var connecturl = this.connecturl;
 
-        var switchService = new Service.Switch(this.name);
-        var connecturl = this.connecturl;
+    this.triggiService = new Service.Switch(this.name);
+    var service = this.triggiService;
 
-        switchService.getCharacteristic(Characteristic.On).on('set', function(value, callback) {
-            if (value == 1) {
-                request(connecturl, function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        switchService.setCharacteristic(Characteristic.On, 0);
-                    } else {
-                        console.log("ERROR");
-                    }
-                })
-                switchService.setCharacteristic(Characteristic.On, 0);
-
-            }
-
+    this.triggiService.getCharacteristic(Characteristic.On).on('set', function(value, callback) {
+        if (value == 1) {
+            request(connecturl, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    service.setCharacteristic(Characteristic.On, 0);
+                    log('[' + name +'] Fired trigg!');
+                } else {
+                    console.log("ERROR");
+                }
+            });
+            service.setCharacteristic(Characteristic.On, 0);
             callback();
-        });
+        } else {
+            callback();
+        }
+        this.triggiService = service;
+    });
 
-        this.services.push(switchService);
-
-        return this.services;
-    }
-
-}
+    return [this.triggiService];
+};
