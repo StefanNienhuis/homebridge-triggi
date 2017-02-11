@@ -1,6 +1,6 @@
 {
   "name": "homebridge-triggi",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "description": "With this plugin you can connect your Triggi services to homebridge",
   "main": "index.js",
   "dependencies": {
