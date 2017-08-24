@@ -34,12 +34,11 @@ function TriggiAccessory(log, config, platform) {
     this.platform = platform;
     this.log = log;
     this.name = config.name;
+    this.type = config.type || "push";
     this.connecturl = config.connecturl;
 
-    if (this.connecturl.startsWith("https://connect.triggi.com/c/")) {
-
-    } else {
-        throw new Error('There is something wrong with your connect URL!');
+    if (!this.connecturl.startsWith("https://connect.triggi.com/c/")) {
+      throw new Error('There is something wrong with your connect on URL!');
     }
 
 }
@@ -47,6 +46,7 @@ function TriggiAccessory(log, config, platform) {
 TriggiAccessory.prototype.getServices = function() {
     var log = this.log;
     var name = this.name;
+    var type = this.type
     var connecturl = this.connecturl;
 
     this.triggiService = new Service.Switch(this.name);
@@ -54,18 +54,40 @@ TriggiAccessory.prototype.getServices = function() {
 
     this.triggiService.getCharacteristic(Characteristic.On).on('set', function(value, callback) {
         if (value == 1) {
+
+          if (type == "push") {
             request(connecturl, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
+                    log('[' + name +'] Pushed trigg!');
                     service.setCharacteristic(Characteristic.On, 0);
-                    log('[' + name +'] Fired trigg!');
                 } else {
                     console.log("ERROR");
                 }
             });
-            service.setCharacteristic(Characteristic.On, 0);
-            callback();
+          } else if (type == "outlet") {
+            request(connecturl + "?value=1", function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    log('[' + name +'] Set trigg value to 1!');
+                } else {
+                    console.log("ERROR");
+                }
+            });
+          }
+
+          callback();
+
         } else {
-            callback();
+          if (type == "outlet") {
+            request(connecturl + "?value=0", function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    log('[' + name +'] Set trigg value to 0!');
+                } else {
+                    console.log("ERROR");
+                }
+            });
+          }
+
+          callback();
         }
         this.triggiService = service;
     });

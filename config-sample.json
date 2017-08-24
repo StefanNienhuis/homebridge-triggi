@@ -1,0 +1,17 @@
+"platforms": [
+    {
+        "platform": "Triggi",
+        "triggs": [
+            {
+                "name": "Sample push",
+                "type": "push",
+                "connecturl": "YOUR UNIQUE CONNECT URL"
+            },
+            {
+                "name": "Sample outlet",
+                "type": "outlet",
+                "connecturl": "YOUR UNIQUE CONNECT URL",
+            }
+        ]
+    }
+]
