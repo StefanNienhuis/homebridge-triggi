@@ -8,6 +8,11 @@
                 "connecturl": "YOUR UNIQUE CONNECT URL"
             },
             {
+                "name": "Sample switch",
+                "type": "switch",
+                "connecturl": "YOUR UNIQUE CONNECT URL",
+            },
+            {
                 "name": "Sample outlet",
                 "type": "outlet",
                 "connecturl": "YOUR UNIQUE CONNECT URL",

@@ -1,10 +1,10 @@
 {
   "name": "homebridge-triggi",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "With this plugin you can connect your Triggi services to homebridge",
   "main": "index.js",
   "dependencies": {
-    "homebridge": "^0.4.16",
+    "node-triggi": "^1.0.1",
     "request": "^2.79.0"
   },
   "engines": {
@@ -28,7 +28,7 @@
     "http"
   ],
   "author": "Stefan Nienhuis",
-  "license": "UNLICENSED",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/StefanNienhuis/homebridge-triggi/issues"
   },
