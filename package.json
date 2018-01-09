@@ -1,11 +1,10 @@
 {
   "name": "homebridge-triggi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "With this plugin you can connect your Triggi services to homebridge",
   "main": "index.js",
   "dependencies": {
-    "node-triggi": "^1.0.1",
-    "request": "^2.79.0"
+    "node-triggi": "^1.0.1"
   },
   "engines": {
     "node": ">=0.12.0",
